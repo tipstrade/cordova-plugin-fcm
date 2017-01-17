@@ -144,7 +144,13 @@ public class FCMPlugin extends CordovaPlugin {
 			lastPush = payload;
 		}
 	}
-	
+
+	@Override
+	public void onDestroy() {
+		gWebView = null;
+		notificationCallBackReady = false;
+	}
+
 	public static void sendTokenRefresh(String token) {
 		Log.d(TAG, "==> FCMPlugin sendRefreshToken");
 	    try {
@@ -155,3 +161,4 @@ public class FCMPlugin extends CordovaPlugin {
 		}
 	}
 } 
+
